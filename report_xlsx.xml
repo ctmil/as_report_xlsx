@@ -9,7 +9,16 @@
         report_type="xlsx"
         name="res.partner.xlsx"
         file="res.partner.xlsx"
-        attachment_use="False"
+       attachment_use="False"
+    />
+    <report 
+        id="stock_move_xlsx"
+        model="stock.move"
+        string="Print to XLSX"
+        report_type="xlsx"
+        name="stock.move.xlsx"
+        file="stock.move.xlsx"
+       attachment_use="False"
     />
 
     </data>

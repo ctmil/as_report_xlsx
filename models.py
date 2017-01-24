@@ -13,3 +13,16 @@ class PartnerXlsx(ReportXlsx):
 
 PartnerXlsx('report.res.partner.xlsx','res.partner')
 
+class StockMoveXlsx(ReportXlsx):
+    
+	def generate_xlsx_report(self, workbook, data, moves):
+		if moves:
+			report_name = moves[0].name
+			sheet = workbook.add_worksheet(report_name[:31])
+			for obj in moves:
+				# One sheet by partner
+				bold = workbook.add_format({'bold': True})
+			sheet.write(0, 0, obj.name, bold)
+
+
+StockMoveXlsx('report.productos.recibir.xlsx','stock.move')
