@@ -27,20 +27,21 @@ class StockMoveXlsx(ReportXlsx):
 				sheet.write(0,columna,heading)
 				columna += 1
 			for obj in moves:
-				sheet.write(row, 0, obj.date_expected)
-				sheet.write(row, 1, obj.date)
+				sheet.write(row, 0, str(obj.date_expected)[:10])
+				sheet.write(row, 1, str(obj.date)[:10])
 				sheet.write(row, 2, obj.picking_id.name)
-				sheet.write(row, 3, obj.sequence)
-				sheet.write(row, 4, obj.origin)
-				sheet.write(row, 5, obj.location_id.name)
-				sheet.write(row, 6, obj.location_dest_id.name)
-				sheet.write(row, 7, obj.picking_partner_id.name)
-				sheet.write(row, 8, obj.tipo_entrega)
-				sheet.write(row, 9, obj.request_name)
-				sheet.write(row, 10, obj.product_id.name)
-				sheet.write(row, 11, obj.brand_id.name)
-				sheet.write(row, 12, obj.product_uom.name)
-				sheet.write(row, 13, obj.state)
+				sheet.write(row, 3, obj.location_dest_id.complete_name)
+				sheet.write(row, 4, obj.picking_partner_id.name)
+				if obj.tipo_entrega == 'proveedor':
+					sheet.write(row, 5, 'Retiramos de deposito del proveedor')
+				else:
+					sheet.write(row, 5, obj.tipo_entrega)
+				sheet.write(row, 6, obj.request_name)
+				sheet.write(row, 7, obj.product_id.name)
+				sheet.write(row, 8, obj.brand_id.name)
+				sheet.write(row, 9, obj.product_uom_qty)
+				sheet.write(row, 10, obj.product_uom.name)
+				sheet.write(row, 11, obj.state)
 				row += 1
 
 
