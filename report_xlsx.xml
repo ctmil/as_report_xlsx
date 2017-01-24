@@ -11,6 +11,7 @@
         file="res.partner.xlsx"
        attachment_use="False"
     />
+
     <report 
         id="stock_move_xlsx"
         model="stock.move"

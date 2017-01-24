@@ -19,10 +19,21 @@ class StockMoveXlsx(ReportXlsx):
 		if moves:
 			report_name = moves[0].name
 			sheet = workbook.add_worksheet(report_name[:31])
+			row = 1
+			headings = ['Fecha Prevista','Fecha','Documento Origen','Ubicacion Destino','Proveedor','Tipo Entrega','Requerimientos','Producto','Marca','Cantidad',\
+				'Unidad de Medida','Estado']
+			columna = 0
+			for heading in headings:
+				sheet.write(0,columna,heading)
+				columna += 1
 			for obj in moves:
 				# One sheet by partner
 				bold = workbook.add_format({'bold': True})
-			sheet.write(0, 0, obj.name, bold)
+				try:
+					sheet.write(row, 0, obj.name)
+					row += 1
+				except:
+					pass
 
 
-StockMoveXlsx('report.productos.recibir.xlsx','stock.move')
+StockMoveXlsx('report.stock.move.xlsx','stock.move')
