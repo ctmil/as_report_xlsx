@@ -29,7 +29,8 @@ class StockMoveXlsx(ReportXlsx):
 			for obj in moves:
 				sheet.write(row, 0, str(obj.date_expected)[:10])
 				sheet.write(row, 1, str(obj.date)[:10])
-				sheet.write(row, 2, obj.picking_id.name)
+				#sheet.write(row, 2, obj.picking_id.name)
+				sheet.write(row, 2, obj.origin)
 				sheet.write(row, 3, obj.location_dest_id.complete_name)
 				sheet.write(row, 4, obj.picking_partner_id.name)
 				if obj.tipo_entrega == 'proveedor':
