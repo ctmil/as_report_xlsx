@@ -20,7 +20,7 @@ class StockMoveXlsx(ReportXlsx):
 			report_name = moves[0].name
 			sheet = workbook.add_worksheet(report_name[:31])
 			row = 1
-			headings = ['Fecha Prevista','Fecha','Documento Origen','Ubicacion Destino','Proveedor','Tipo Entrega','Requerimientos','Producto','Marca','Cantidad',\
+			headings = ['Fecha Prevista','Fecha','Documento Origen','Ubicacion Destino','Proveedor','Tipo Entrega','Entregar a','Requerimientos','Producto','Marca','Cantidad',\
 				'Unidad de Medida','Estado']
 			columna = 0
 			for heading in headings:
@@ -37,12 +37,13 @@ class StockMoveXlsx(ReportXlsx):
 					sheet.write(row, 5, 'Retiramos de deposito del proveedor')
 				else:
 					sheet.write(row, 5, obj.tipo_entrega)
-				sheet.write(row, 6, obj.request_name)
-				sheet.write(row, 7, obj.product_id.name)
-				sheet.write(row, 8, obj.brand_id.name)
-				sheet.write(row, 9, obj.product_uom_qty)
-				sheet.write(row, 10, obj.product_uom.name)
-				sheet.write(row, 11, obj.state)
+				sheet.write(row, 6, obj.picking_type_id.name)
+				sheet.write(row, 7, obj.request_name)
+				sheet.write(row, 8, obj.product_id.name)
+				sheet.write(row, 9, obj.brand_id.name)
+				sheet.write(row, 10, obj.product_uom_qty)
+				sheet.write(row, 12, obj.product_uom.name)
+				sheet.write(row, 12, obj.state)
 				row += 1
 
 
